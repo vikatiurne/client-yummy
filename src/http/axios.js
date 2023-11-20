@@ -2,7 +2,8 @@ import axios from 'axios';
 
 const $api = axios.create({
   withCredentials: true, //автоматич запись cookie к каждому запросу
-  baseURL: process.env.REACT_APP_API_URL,
+  baseURL: "https://api-yummy.onrender.com",
+  // baseURL: process.env.REACT_APP_API_URL,
 });
 
 // автозапись access token в headers запроса
