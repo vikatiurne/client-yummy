@@ -105,6 +105,7 @@ const authSlice = createSlice({
           state.user = payload.data.user;
           localStorage.setItem('token', payload.data.accessToken);
         } else {
+          console.log(payload.data)
           if (!!payload.data.errors.length) {
             let problems = [];
 

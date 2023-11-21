@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const $api = axios.create({
   withCredentials: true, //автоматич запись cookie к каждому запросу
-  baseURL: "https://api-yummy.onrender.com",
+  baseURL: 'https://api-yummy.onrender.com',
   // baseURL: process.env.REACT_APP_API_URL,
 });
 
@@ -26,13 +26,12 @@ $api.interceptors.response.use(
           `${process.env.REACT_APP_API_URL}api/user/refresh`,
           { withCredentials: true }
         );
-     
+
         localStorage.setItem('token', response.data.accessToken);
-        return $api.request(originalRequest)
+        return $api.request(originalRequest);
       } catch (error) {
-        console.error(error)
+        console.error(error);
       }
-    
     }
   }
 );
