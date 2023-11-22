@@ -59,11 +59,7 @@ export const fetchResetPassword = createAsyncThunk(
 
 export const fetchGetGoogleUser = createAsyncThunk(
   'auth/fetchGetGoogleUser',
-  async () => {
-    const response = await AuthServices.getGoogleUser()
-    console.log(response)
-  }
-  // async () => await AuthServices.getGoogleUser()
+  async () => await AuthServices.getGoogleUser()
 );
 
 export const fetchGetRedirectUrl = createAsyncThunk(
