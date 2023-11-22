@@ -1,8 +1,7 @@
-import { LoginForm } from "../../components"
-
+import { LoginForm } from '../../components';
 
 const Auth = () => {
-  return <LoginForm/>;
+  return <LoginForm />;
 };
 
 export default Auth;

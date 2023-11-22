@@ -135,7 +135,6 @@ const authSlice = createSlice({
         state.status = 'loading';
       })
       .addCase(fetchLogout.fulfilled, (state) => {
-        console.log('logout')
         localStorage.removeItem('token');
         state.status = 'success';
         state.error = null;
@@ -185,13 +184,13 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchGetGoogleUser.fulfilled, (state, { payload }) => {
+        console.log(payload)
         state.isAuth = true;
         state.user = payload.data.user;
         localStorage.setItem('token', payload.data.accessToken)
       })
       .addCase(fetchGetGoogleUser.rejected, (state, { payload }) => {
         state.status = 'error';
-        console.log(payload)
         // state.error = payload.message
       })
       .addCase(fetchGetRedirectUrl.fulfilled, (state, { payload }) => {
