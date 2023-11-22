@@ -57,6 +57,10 @@ export const fetchResetPassword = createAsyncThunk(
   }
 );
 
+export const fetchGetCurentGoogleUser = createAsyncThunk(
+  'auth/fetchGetCurentGoogleUser',
+  async () => await AuthServices.getCurentGoogleUser()
+);
 export const fetchGetGoogleUser = createAsyncThunk(
   'auth/fetchGetGoogleUser',
   async () => await AuthServices.getGoogleUser()
@@ -179,8 +183,20 @@ const authSlice = createSlice({
         state.status = 'error';
         state.error = payload.message;
       })
-      .addCase(fetchGetGoogleUser.pending, (state, payload) => {
-        console.log(payload)
+      .addCase(fetchGetCurentGoogleUser.pending, (state) => {
+        state.status = 'loading';
+        state.error = null;
+      })
+      .addCase(fetchGetCurentGoogleUser.fulfilled, (state, { payload }) => {
+        state.isAuth = true;
+        state.user = payload.data.user;
+        localStorage.setItem('token', payload.data.accessToken)
+      })
+      .addCase(fetchGetCurentGoogleUser.rejected, (state, { payload }) => {
+        state.status = 'error';
+        // state.error = payload.message
+      })
+      .addCase(fetchGetGoogleUser.pending, (state) => {
         state.status = 'loading';
         state.error = null;
       })
