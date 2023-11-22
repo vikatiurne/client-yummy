@@ -179,7 +179,8 @@ const authSlice = createSlice({
         state.status = 'error';
         state.error = payload.message;
       })
-      .addCase(fetchGetGoogleUser.pending, (state) => {
+      .addCase(fetchGetGoogleUser.pending, (state, payload) => {
+        console.log(payload)
         state.status = 'loading';
         state.error = null;
       })
