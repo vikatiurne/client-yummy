@@ -59,7 +59,11 @@ export const fetchResetPassword = createAsyncThunk(
 
 export const fetchGetGoogleUser = createAsyncThunk(
   'auth/fetchGetGoogleUser',
-  async () => await AuthServices.getGoogleUser()
+  async () => {
+    const response = await AuthServices.getGoogleUser()
+    console.log(response)
+  }
+  // async () => await AuthServices.getGoogleUser()
 );
 
 export const fetchGetRedirectUrl = createAsyncThunk(
@@ -184,7 +188,6 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchGetGoogleUser.fulfilled, (state, { payload }) => {
-        console.log(payload)
         state.isAuth = true;
         state.user = payload.data.user;
         localStorage.setItem('token', payload.data.accessToken)
