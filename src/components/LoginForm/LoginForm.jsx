@@ -40,6 +40,10 @@ const LoginForm = () => {
   }, [dispatch]);
 
   useEffect(() => {
+    dispatch(fetchGetCurentGoogleUser())
+  }, [dispatch, user]);
+
+  useEffect(() => {
     if (!!err) setModalActive(true);
   }, [err]);
 
@@ -49,10 +53,10 @@ const LoginForm = () => {
 
   const loginHandler = () => {
     dispatch(fetchLogin({ email, password }));
-    if (!!user) {
-      const userId = user.id;
+    if (!!user){
+const userId=user.id
       dispatch(fetchGetBasket({ userId }));
-    }
+    } 
   };
 
   const registrationHandler = () =>
@@ -73,10 +77,6 @@ const LoginForm = () => {
     setRegistr(false);
     setForgotPass(false);
     setLogin(true);
-  };
-
-  const googleLoginHanler = () => {
-    dispatch(fetchGetCurentGoogleUser());
   };
 
   const forgotHandler = () => {
@@ -159,11 +159,7 @@ const LoginForm = () => {
 
         <div className={styles.formControl}>
           <Link to={url}>
-            <img
-              src={googleBtn}
-              alt="google sing in"
-              onClick={googleLoginHanler}
-            />
+            <img src={googleBtn} alt="google sing in" />
           </Link>
 
           {login && (
