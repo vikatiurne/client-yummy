@@ -37,8 +37,11 @@ const LoginForm = () => {
 
   useEffect(() => {
     dispatch(fetchGetRedirectUrl());
-    dispatch(fetchGetCurentGoogleUser())
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchGetCurentGoogleUser())
+  }, [dispatch, userId]);
 
   useEffect(() => {
     if (!!err) setModalActive(true);
