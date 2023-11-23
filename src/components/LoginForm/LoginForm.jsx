@@ -34,15 +34,14 @@ const LoginForm = () => {
   const err = useSelector((state) => state.auth.error);
   const url = useSelector((state) => state.auth.redirectUrl);
   const user = useSelector((state) => state.auth.user);
-  console.log(user)
 
   useEffect(() => {
     dispatch(fetchGetRedirectUrl());
   }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(fetchGetCurentGoogleUser())
-  }, [dispatch, user]);
+  // useEffect(() => {
+  //   dispatch(fetchGetCurentGoogleUser())
+  // }, [dispatch, user]);
 
   useEffect(() => {
     if (!!err) setModalActive(true);
