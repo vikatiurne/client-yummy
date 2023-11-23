@@ -52,8 +52,8 @@ function Home() {
   ]);
 
   useEffect(() => {
-    if (!isAuth) dispatch(fetchGetGoogleUser());
-  }, [dispatch, isAuth]);
+    dispatch(fetchGetGoogleUser());
+  }, [dispatch]);
 
 
   return (
