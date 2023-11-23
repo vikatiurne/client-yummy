@@ -27,6 +27,6 @@ export default class AuthServices {
     return $api.get('/api/user/auth/google/url');
   }
   static async getGoogleUser() {
-    return $api.get('/api/user/auth/google');
+    return $api.get('/api/user/auth/me');
   }
 }
