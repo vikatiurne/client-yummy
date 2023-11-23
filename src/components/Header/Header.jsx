@@ -9,22 +9,28 @@ import styles from './Header.module.css';
 import Button from '../UI/Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchLogout } from '../../pages/Auth/AuthSlice';
-import { fetchGetBasket, getTotalPrice, resetBasket } from '../../pages/Basket/BasketSlice';
+import {
+  fetchGetBasket,
+  getTotalPrice,
+  resetBasket,
+} from '../../pages/Basket/BasketSlice';
 
 const Header = () => {
   const isAuth = useSelector((state) => state.auth.isAuth);
   const user = useSelector((state) => state.auth.user);
   const price = useSelector((state) => state.basket.totalPrice);
   const orders = useSelector((state) => state.basket.order);
-  const userId = useSelector((state) => state.auth.user.id);
 
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!!userId) dispatch(fetchGetBasket({ userId }));
-  }, [dispatch, userId]);
+    if (!!user.id) {
+      const userId = user.id;
+      dispatch(fetchGetBasket({ userId }));
+    }
+  }, [dispatch, user]);
 
   useEffect(() => {
     if (orders) {
@@ -40,10 +46,10 @@ const Header = () => {
 
   const logoutHandler = () => {
     dispatch(fetchLogout());
-    dispatch(resetBasket())
-    navigate('/')
+    dispatch(resetBasket());
+    navigate('/');
   };
-console.log("isAuth:", isAuth)
+  console.log('isAuth:', isAuth);
   return (
     <div className={styles.logoWrapper}>
       <Button className={styles.basket}>
@@ -56,12 +62,12 @@ console.log("isAuth:", isAuth)
           </>
         ) : (
           <>
-              <p onClick={logoutHandler}>Вихід</p>
+            <p onClick={logoutHandler}>Вихід</p>
             <span />
           </>
         )}
         {!isAuth ? (
-          <IoPerson className={styles.basketIcon} onClick={()=>{}} />
+          <IoPerson className={styles.basketIcon} onClick={() => {}} />
         ) : (
           <>
             {user.role === 'ADMIN' ? (
