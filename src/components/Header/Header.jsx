@@ -17,7 +17,6 @@ const Header = () => {
   const price = useSelector((state) => state.basket.totalPrice);
   const orders = useSelector((state) => state.basket.order);
   const userId = useSelector((state) => state.auth.user.id);
-  console.log(userName)
 
   const dispatch = useDispatch();
 
