@@ -5,7 +5,6 @@ import { Link, Navigate } from 'react-router-dom';
 
 import {
   fetchForgotPassword,
-  fetchGetCurentGoogleUser,
   fetchGetRedirectUrl,
   fetchLogin,
   fetchRegistration,
@@ -39,9 +38,6 @@ const LoginForm = () => {
     dispatch(fetchGetRedirectUrl());
   }, [dispatch]);
 
-  // useEffect(() => {
-  //   dispatch(fetchGetCurentGoogleUser())
-  // }, [dispatch, user]);
 
   useEffect(() => {
     if (!!err) setModalActive(true);
