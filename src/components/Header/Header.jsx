@@ -13,7 +13,7 @@ import { fetchGetBasket, getTotalPrice, resetBasket } from '../../pages/Basket/B
 
 const Header = () => {
   const isAuth = useSelector((state) => state.auth.isAuth);
-  const userName = useSelector((state) => state.auth.user.name);
+  const userName = useSelector((state) => state.auth.user);
   const role = useSelector((state) => state.auth.user.role);
   const price = useSelector((state) => state.basket.totalPrice);
   const orders = useSelector((state) => state.basket.order);
@@ -68,7 +68,7 @@ console.log("isAuth:", isAuth)
             {role === 'ADMIN' ? (
               <p onClick={() => navigate('/admin')}>Адмін</p>
             ) : (
-              <p>{userName}</p>
+              <p>{userName.name}</p>
             )}
           </>
         )}

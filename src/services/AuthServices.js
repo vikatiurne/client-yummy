@@ -26,10 +26,7 @@ export default class AuthServices {
   static async getGoogleRedirectUrl() {
     return $api.get('/api/user/auth/google/url');
   }
-  static async getCurentGoogleUser() {
-    return $api.get('/api/user/auth/me');
-  }
   static async getGoogleUser() {
-    return $api.get('/api/user/auth/google');
+    return $api.get('/api/user/auth/me');
   }
 }
