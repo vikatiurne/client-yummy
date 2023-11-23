@@ -13,8 +13,7 @@ import { fetchGetBasket, getTotalPrice, resetBasket } from '../../pages/Basket/B
 
 const Header = () => {
   const isAuth = useSelector((state) => state.auth.isAuth);
-  const userName = useSelector((state) => state.auth.user);
-  const role = useSelector((state) => state.auth.user.role);
+  const user = useSelector((state) => state.auth.user);
   const price = useSelector((state) => state.basket.totalPrice);
   const orders = useSelector((state) => state.basket.order);
   const userId = useSelector((state) => state.auth.user.id);
@@ -66,10 +65,10 @@ console.log("isAuth:", isAuth)
           <IoPerson className={styles.basketIcon} onClick={()=>{}} />
         ) : (
           <>
-            {role === 'ADMIN' ? (
+            {user.role === 'ADMIN' ? (
               <p onClick={() => navigate('/admin')}>Адмін</p>
             ) : (
-              <p>{userName.name}</p>
+              <p>{user.name}</p>
             )}
           </>
         )}
