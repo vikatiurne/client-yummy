@@ -34,6 +34,7 @@ const LoginForm = () => {
   const err = useSelector((state) => state.auth.error);
   const url = useSelector((state) => state.auth.redirectUrl);
   const user = useSelector((state) => state.auth.user);
+  console.log(user)
 
   useEffect(() => {
     dispatch(fetchGetRedirectUrl());
