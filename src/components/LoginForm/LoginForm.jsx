@@ -5,6 +5,7 @@ import { Link, Navigate } from 'react-router-dom';
 
 import {
   fetchForgotPassword,
+  fetchGetCurentGoogleUser,
   fetchGetRedirectUrl,
   fetchLogin,
   fetchRegistration,
@@ -36,6 +37,7 @@ const LoginForm = () => {
 
   useEffect(() => {
     dispatch(fetchGetRedirectUrl());
+    dispatch(fetchGetCurentGoogleUser())
   }, [dispatch]);
 
   useEffect(() => {

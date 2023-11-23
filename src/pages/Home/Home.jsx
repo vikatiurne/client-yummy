@@ -8,7 +8,7 @@ import {
   fetchGetCategory,
   fetchGetSubcategory,
 } from './HomeSlice';
-import { fetchGetCurentGoogleUser, fetchGetGoogleUser } from '../Auth/AuthSlice';
+import { fetchGetGoogleUser } from '../Auth/AuthSlice';
 
 import styles from './Home.module.css';
 
@@ -55,9 +55,6 @@ function Home() {
     if (!isAuth) dispatch(fetchGetGoogleUser());
   }, [dispatch, isAuth]);
 
-  useEffect(() => {
-    dispatch(fetchGetCurentGoogleUser());
-  }, [dispatch, isAuth]);
 
   return (
     <>
