@@ -33,15 +33,11 @@ const LoginForm = () => {
   const isAuth = useSelector((state) => state.auth.isAuth);
   const err = useSelector((state) => state.auth.error);
   const url = useSelector((state) => state.auth.redirectUrl);
-  const userId = useSelector((state) => state.auth.user.id);
+  const user = useSelector((state) => state.auth.user);
 
   useEffect(() => {
     dispatch(fetchGetRedirectUrl());
   }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(fetchGetCurentGoogleUser())
-  }, [dispatch, userId]);
 
   useEffect(() => {
     if (!!err) setModalActive(true);
@@ -53,7 +49,10 @@ const LoginForm = () => {
 
   const loginHandler = () => {
     dispatch(fetchLogin({ email, password }));
-    if (!!userId) dispatch(fetchGetBasket({ userId }));
+    if (!!user) {
+      const userId = user.id;
+      dispatch(fetchGetBasket({ userId }));
+    }
   };
 
   const registrationHandler = () =>
@@ -74,6 +73,10 @@ const LoginForm = () => {
     setRegistr(false);
     setForgotPass(false);
     setLogin(true);
+  };
+
+  const googleLoginHanler = () => {
+    dispatch(fetchGetCurentGoogleUser());
   };
 
   const forgotHandler = () => {
@@ -156,7 +159,11 @@ const LoginForm = () => {
 
         <div className={styles.formControl}>
           <Link to={url}>
-            <img src={googleBtn} alt="google sing in" />
+            <img
+              src={googleBtn}
+              alt="google sing in"
+              onClick={googleLoginHanler}
+            />
           </Link>
 
           {login && (
