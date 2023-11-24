@@ -52,7 +52,7 @@ function Home() {
   ]);
 
   useEffect(() => {
-    dispatch(fetchGetGoogleUser());
+   if(isAuth) dispatch(fetchGetGoogleUser());
   }, [dispatch]);
 
 
