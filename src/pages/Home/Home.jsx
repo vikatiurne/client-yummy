@@ -56,7 +56,7 @@ function Home() {
   useEffect(() => {
     // dispatch(fetchGetGoogleUser());
     if (isRedirect) dispatch(fetchGetGoogleUser());
-  }, [dispatch]);
+  }, [dispatch, isRedirect]);
 
   return (
     <>
