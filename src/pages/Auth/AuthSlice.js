@@ -7,7 +7,8 @@ const initialState = {
   status: 'idle',
   error: null,
   msg: null,
-  redirectUrl:'',
+  redirectUrl: '',
+  isRedirect: false,
 };
 
 export const fetchLogin = createAsyncThunk(
@@ -85,7 +86,7 @@ const authSlice = createSlice({
         if (!!payload.data.user) {
           state.isAuth = true;
           state.user = payload.data.user;
-          console.log('token:', payload.data.accessToken)
+          console.log('token:', payload.data.accessToken);
           localStorage.setItem('token', payload.data.accessToken);
         } else {
           state.error = payload.data.message;
@@ -139,8 +140,8 @@ const authSlice = createSlice({
         state.status = 'success';
         state.error = null;
         state.isAuth = false;
+        isRedirect = false
         state.user = {};
-        
       })
       .addCase(fetchLogout.rejected, (state) => {
         state.status = 'error';
@@ -186,16 +187,17 @@ const authSlice = createSlice({
       .addCase(fetchGetGoogleUser.fulfilled, (state, { payload }) => {
         state.isAuth = true;
         state.user = payload.data.user;
-        localStorage.setItem('token', payload.data.accessToken)
+        localStorage.setItem('token', payload.data.accessToken);
       })
       .addCase(fetchGetGoogleUser.rejected, (state, { payload }) => {
         state.status = 'error';
-        console.log(payload)
+        console.log(payload);
         // state.error = payload.message
       })
       .addCase(fetchGetRedirectUrl.fulfilled, (state, { payload }) => {
-        state.redirectUrl = payload.data
-      })
+        state.redirectUrl = payload.data;
+        state.isRedirect = true;
+      });
   },
 });
 
