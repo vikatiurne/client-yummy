@@ -8,7 +8,7 @@ import {
   fetchGetCategory,
   fetchGetSubcategory,
 } from './HomeSlice';
-// import { fetchGetGoogleUser } from '../Auth/AuthSlice';
+import { fetchGetGoogleUser } from '../Auth/AuthSlice';
 
 import styles from './Home.module.css';
 
