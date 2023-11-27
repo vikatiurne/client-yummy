@@ -54,10 +54,10 @@ function Home() {
     ratingById,
   ]);
 
-  useEffect(() => {
-    // dispatch(fetchGetGoogleUser());
-    if (isRedirect) dispatch(fetchGetGoogleUser());
-  }, [dispatch, isRedirect]);
+  // useEffect(() => {
+  //   // dispatch(fetchGetGoogleUser());
+  //   if (isRedirect) dispatch(fetchGetGoogleUser());
+  // }, [dispatch, isRedirect]);
 
   return (
     <>
