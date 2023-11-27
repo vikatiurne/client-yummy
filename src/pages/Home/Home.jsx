@@ -22,6 +22,7 @@ function Home() {
   const ratingById = useSelector((state) => state.prodact.rating);
   // const isAuth = useSelector((state) => state.auth.isAuth);
   const isRedirect = useSelector((state) => state.auth.isRedirect);
+  console.log("redir:", isRedirect)
 
 
   const dispatch = useDispatch();
