@@ -140,7 +140,7 @@ const authSlice = createSlice({
         state.status = 'success';
         state.error = null;
         state.isAuth = false;
-        isRedirect = false
+        state.isRedirect = false
         state.user = {};
       })
       .addCase(fetchLogout.rejected, (state) => {
