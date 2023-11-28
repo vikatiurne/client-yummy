@@ -8,7 +8,6 @@ const initialState = {
   error: null,
   msg: null,
   redirectUrl: '',
-  isRedirect: false,
 };
 
 export const fetchLogin = createAsyncThunk(
@@ -140,7 +139,6 @@ const authSlice = createSlice({
         state.status = 'success';
         state.error = null;
         state.isAuth = false;
-        state.isRedirect = false
         state.user = {};
       })
       .addCase(fetchLogout.rejected, (state) => {
@@ -196,7 +194,6 @@ const authSlice = createSlice({
       })
       .addCase(fetchGetRedirectUrl.fulfilled, (state, { payload }) => {
         state.redirectUrl = payload.data;
-        state.isRedirect = true;
       });
   },
 });

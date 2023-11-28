@@ -20,9 +20,8 @@ function Home() {
   const orderBy = useSelector((state) => state.home.orderBy);
   const sortBy = useSelector((state) => state.home.sortBy);
   const ratingById = useSelector((state) => state.prodact.rating);
-  // const isAuth = useSelector((state) => state.auth.isAuth);
-  const isRedirect = useSelector((state) => state.auth.isRedirect);
-  console.log("redir:", isRedirect)
+  const isAuth = useSelector((state) => state.auth.isAuth);
+  console.log("auth:", isAuth)
 
 
   const dispatch = useDispatch();
@@ -56,8 +55,8 @@ function Home() {
 
   useEffect(() => {
     // dispatch(fetchGetGoogleUser());
-    if (isRedirect) dispatch(fetchGetGoogleUser());
-  }, [dispatch, isRedirect]);
+    if (isAuth) dispatch(fetchGetGoogleUser());
+  }, [dispatch, isAuth]);
 
   return (
     <>
