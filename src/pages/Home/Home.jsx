@@ -21,8 +21,7 @@ function Home() {
   const sortBy = useSelector((state) => state.home.sortBy);
   const ratingById = useSelector((state) => state.prodact.rating);
   const isAuth = useSelector((state) => state.auth.isAuth);
-  console.log("auth:", isAuth)
-
+  console.log('auth:', isAuth);
 
   const dispatch = useDispatch();
 
@@ -54,9 +53,9 @@ function Home() {
   ]);
 
   useEffect(() => {
-    // dispatch(fetchGetGoogleUser());
-    if (isAuth) dispatch(fetchGetGoogleUser());
-  }, [dispatch, isAuth]);
+    dispatch(fetchGetGoogleUser());
+    // if (isAuth) dispatch(fetchGetGoogleUser());
+  }, [dispatch]);
 
   return (
     <>
